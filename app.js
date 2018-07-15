@@ -2,7 +2,9 @@ const express = require('express');
 const app = express();
 const port = process.env.port || 3000;
 
+//middleware configuratio
 app.use(express.json());
+
 const movies = [
     {id:1,movieName:'Jurassic Park'},
     {id:2,movieName:'The Lost World'},
