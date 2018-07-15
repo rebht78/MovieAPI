@@ -4,6 +4,7 @@ const port = process.env.port || 3000;
 
 //middleware configuratio
 app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 
 const movies = [
     {id:1,movieName:'Jurassic Park'},
