@@ -1,0 +1,10 @@
+{
+    "db": {
+        "host":"mongodb hostname for production",
+        "dbname":"movies_collection"
+    },
+    "mail": {
+        "host":"mail host for production",
+        "username":"mail username for production"
+    }
+}
