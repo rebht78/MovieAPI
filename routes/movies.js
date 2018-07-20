@@ -1,4 +1,6 @@
+const Joi = require('joi');
 const express = require('express');
+const movieSchema = require('./validation');
 const router = express.Router();
 
 const movies = [
@@ -23,6 +25,11 @@ router.get('/:id', (req,res) => {
 });
 
 router.post('/', (req,res) => {
+    const result = Joi.validate(req.body,movieSchema);
+    if (result.error)
+    {
+        return res.status(400).send(result.error);
+    }
     const movie = {
         id: movies.length + 1,
         movieName:req.body.movieName
