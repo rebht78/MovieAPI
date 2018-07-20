@@ -6,4 +6,4 @@ const movieSchema = {
 
 //create schema for each collection of inputs in this way
 
-module.exports = movieSchema;
+module.exports.movies = movieSchema;
