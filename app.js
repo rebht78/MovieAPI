@@ -1,6 +1,7 @@
 const config = require('config');
 const express = require('express');
 const router = require('./routes/movies');
+const MovieModel = require('./schema/movies');
 const app = express();
 const port = process.env.port || 3000;
 
@@ -8,6 +9,11 @@ const port = process.env.port || 3000;
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use('/api/movies',router);
+
+const newMovie = new MovieModel({
+    name: "The Great Game",
+    tags:["detective","great","game","stranger"]
+});
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}....`);
@@ -19,5 +25,7 @@ app.listen(port, () => {
     set NODE_ENV=development
     export NODE_ENV=production
     */
-    console.log(`The details of db is ${config.get("db.host")} and of mail is ${config.get("mail.host")}`);
+    MovieModel.createMovie(newMovie, () => {
+        console.log("Data inserted successfully!");
+    });
 });
